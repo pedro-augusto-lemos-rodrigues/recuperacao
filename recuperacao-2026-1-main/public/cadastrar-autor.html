@@ -137,32 +137,29 @@
 
 
 
-        var listaProibido = ['1','2','3','4','5','6','7','8','9','0','!','@','#','$', '%','*','()','{}','[]','/','?','°', '+', '_', '=']
 
 
-        var nomeAutor = nome.value
+
+
+        var listaProibido = ['1','2','3','4','5','6','7','8','9','0','!','@','#','$', '%','*','(', ')','{', '}','[', ']','/','?','°', '+', '_', '=']
+
+
+        var nomeAutor = nome.value.trim()
 
             
         for (i = 0; i < listaProibido.length; i++){
 
-            var autor = nomeAutor.length   
 
-            if(autor.include(listaProibido)){
+            if(nomeAutor.includes(listaProibido[i])){
                 alert(`O nome inseriso, ${nomeAutor}, possuo um caractere especial ou número, nome inválido`)
                 return false
 
 
-            } else{
-                alert(`O nome inseriso, ${nomeAutor}, foi validado`)
-                return true
-            
-            
-            
-            }
 
-
+            } 
 
         }
+
 
 
 

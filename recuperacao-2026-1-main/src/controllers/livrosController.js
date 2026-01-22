@@ -89,9 +89,75 @@ function deletar(req, res) {
         );
 }
 
+
+function plotarQuantidadeCadastro(req, res){
+    
+
+
+}
+
+
+
+
+function listar(req, res) {
+    livrosModel.listar().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function plotarQuantidadeLivros(){
+
+    var instrucaoSql = `
+    
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+
+
+}
+
+
+function plotarAutoresCaros(){
+
+    var instrucaoSql = `
+    
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+
+
+}
+
 module.exports = {
     listar,
     cadastrar,
     editar,
-    deletar
+    deletar,
+    plotarQuantidadeCadastro,
+    plotarQuantidadeLivros,
+    plotarAutoresCaros
 }

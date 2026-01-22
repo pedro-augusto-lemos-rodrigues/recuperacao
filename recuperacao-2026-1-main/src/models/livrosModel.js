@@ -39,9 +39,63 @@ function editar(novoPrecoCompra, novoPrecoVenda, id) {
     return database.executar(instrucaoSql);
 }
 
+function plotarQuantidadeCadastro(){
+
+    var instrucaoSql = `
+    SELECT 
+    livro.estoque,
+    genero.nome AS nomeGenero
+FROM livro
+	JOIN genero ON genero.id = livro.fkGenero;
+    
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+
+
+}
+
+function plotarQuantidadeLivros(){
+
+    var instrucaoSql = `
+    SELECT
+    livro.estoque AS estoque,
+    genero.nome AS nomeGenero
+FROM livro
+	JOIN genero ON genero.id = livro.fkGenero
+    ORDER BY estoque;
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+
+
+}
+
+
+function plotarAutoresCaros(){
+
+    var instrucaoSql = `
+    SELECT 
+    livro.precoVenda,
+    autor.nome AS nomeAutor
+FROM livro
+	JOIN autor ON autor.id = livro.fkAutor
+    ORDER BY precoVenda;
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+
+
+}
 
 module.exports = {
     listar,
     cadastrar,
-    editar
+    editar,
+    plotarQuantidadeCadastro,
+    plotarQuantidadeLivros,
+    plotarAutoresCaros
 }
